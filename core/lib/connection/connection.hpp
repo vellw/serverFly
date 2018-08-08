@@ -67,6 +67,8 @@ private:
 
   /// The reply to be sent back to the client.
   reply reply_;
+
+    void set_global_var() const;
 };
 
 typedef std::shared_ptr<connection> connection_ptr;
