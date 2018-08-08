@@ -12,8 +12,8 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include "mime_types.hpp"
-#include "reply.hpp"
+#include "../mime/mime_types.hpp"
+#include "../reply/reply.hpp"
 #include "request.hpp"
 
 namespace http {
@@ -42,10 +42,10 @@ void request_handler::handle_request(const request& req, reply& rep)
     return;
   }
 
-  // If path ends in slash (i.e. is a directory) then add "index.html".
+  // If path ends in slash (i.e. is a directory) then add "main.html".
   if (request_path[request_path.size() - 1] == '/')
   {
-    request_path += "index.html";
+    request_path += "main.html";
   }
 
   // Determine the file extension.
@@ -117,5 +117,5 @@ bool request_handler::url_decode(const std::string& in, std::string& out)
   return true;
 }
 
-} // namespace server
+} // namespace fly-server
 } // namespace http

@@ -36,5 +36,5 @@ void connection_manager::stop_all()
   connections_.clear();
 }
 
-} // namespace server
+} // namespace fly-server
 } // namespace http

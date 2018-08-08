@@ -41,7 +41,7 @@ private:
   static bool url_decode(const std::string& in, std::string& out);
 };
 
-} // namespace server
+} // namespace fly-server
 } // namespace http
 
 #endif // HTTP_REQUEST_HANDLER_HPP

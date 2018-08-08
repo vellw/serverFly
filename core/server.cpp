@@ -1,5 +1,5 @@
 //
-// server.cpp
+// fly-server.cpp
 // ~~~~~~~~~~
 //
 // Copyright (c) 2003-2018 Christopher M. Kohlhoff (chris at kohlhoff dot com)
@@ -23,7 +23,7 @@ server::server(const std::string& address, const std::string& port,
     connection_manager_(),
     request_handler_(doc_root)
 {
-  // Register to handle the signals that indicate when the server should exit.
+  // Register to handle the signals that indicate when the fly-server should exit.
   // It is safe to register for the same signal multiple times in a program,
   // provided all registration for the specified signal is made through Asio.
   signals_.add(SIGINT);
@@ -49,7 +49,7 @@ server::server(const std::string& address, const std::string& port,
 void server::run()
 {
   // The io_context::run() call will block until all asynchronous operations
-  // have finished. While the server is running, there is always at least one
+  // have finished. While the fly-server is running, there is always at least one
   // asynchronous operation outstanding: the asynchronous accept call waiting
   // for new incoming connections.
   io_context_.run();
@@ -60,7 +60,7 @@ void server::do_accept()
   acceptor_.async_accept(
       [this](boost::system::error_code ec, boost::asio::ip::tcp::socket socket)
       {
-        // Check whether the server was stopped by a signal before this
+        // Check whether the fly-server was stopped by a signal before this
         // completion handler had a chance to run.
         if (!acceptor_.is_open())
         {
@@ -82,7 +82,7 @@ void server::do_await_stop()
   signals_.async_wait(
       [this](boost::system::error_code /*ec*/, size_t /*signo*/)
       {
-        // The server is stopped by cancelling all outstanding asynchronous
+        // The fly-server is stopped by cancelling all outstanding asynchronous
         // operations. Once all operations have finished the io_context::run()
         // call will exit.
         acceptor_.close();
@@ -90,5 +90,5 @@ void server::do_await_stop()
       });
 }
 
-} // namespace server
+} // namespace fly-server
 } // namespace http

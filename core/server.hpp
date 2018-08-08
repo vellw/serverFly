@@ -1,5 +1,5 @@
 //
-// server.hpp
+// fly-server.hpp
 // ~~~~~~~~~~
 //
 // Copyright (c) 2003-2018 Christopher M. Kohlhoff (chris at kohlhoff dot com)
@@ -13,9 +13,9 @@
 
 #include <boost/asio.hpp>
 #include <string>
-#include "connection.hpp"
-#include "connection_manager.hpp"
-#include "request_handler.hpp"
+#include "lib/connection/connection.hpp"
+#include "lib/connection/connection_manager.hpp"
+#include "lib/request/request_handler.hpp"
 
 namespace http {
 namespace server {
@@ -58,7 +58,7 @@ private:
   request_handler request_handler_;
 };
 
-} // namespace server
+} // namespace fly-server
 } // namespace http
 
 #endif // HTTP_SERVER_HPP

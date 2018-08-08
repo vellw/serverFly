@@ -13,7 +13,7 @@
 
 #include <string>
 #include <vector>
-#include "header.hpp"
+#include "../../header.hpp"
 
 namespace http {
 namespace server {
@@ -28,7 +28,7 @@ struct request
   std::vector<header> headers;
 };
 
-} // namespace server
+} // namespace fly-server
 } // namespace http
 
 #endif // HTTP_REQUEST_HPP

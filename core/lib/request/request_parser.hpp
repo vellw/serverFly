@@ -90,7 +90,7 @@ private:
   } state_;
 };
 
-} // namespace server
+} // namespace fly-server
 } // namespace http
 
 #endif // HTTP_REQUEST_PARSER_HPP

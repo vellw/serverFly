@@ -22,7 +22,7 @@ struct header
   std::string value;
 };
 
-} // namespace server
+} // namespace fly-server
 } // namespace http
 
 #endif // HTTP_HEADER_HPP

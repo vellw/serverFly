@@ -14,10 +14,10 @@
 #include <array>
 #include <memory>
 #include <boost/asio.hpp>
-#include "reply.hpp"
-#include "request.hpp"
-#include "request_handler.hpp"
-#include "request_parser.hpp"
+#include "../reply/reply.hpp"
+#include "../request/request.hpp"
+#include "../request/request_handler.hpp"
+#include "../request/request_parser.hpp"
 
 namespace http {
 namespace server {
@@ -73,7 +73,7 @@ private:
 
 typedef std::shared_ptr<connection> connection_ptr;
 
-} // namespace server
+} // namespace fly-server
 } // namespace http
 
 #endif // HTTP_CONNECTION_HPP

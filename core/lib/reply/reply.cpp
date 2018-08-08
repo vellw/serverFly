@@ -251,5 +251,5 @@ reply reply::stock_reply(reply::status_type status)
   return rep;
 }
 
-} // namespace server
+} // namespace fly-server
 } // namespace http

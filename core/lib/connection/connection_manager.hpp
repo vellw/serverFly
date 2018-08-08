@@ -42,7 +42,7 @@ private:
   std::set<connection_ptr> connections_;
 };
 
-} // namespace server
+} // namespace fly-server
 } // namespace http
 
 #endif // HTTP_CONNECTION_MANAGER_HPP

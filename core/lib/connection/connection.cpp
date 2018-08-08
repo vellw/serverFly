@@ -12,7 +12,7 @@
 #include <utility>
 #include <vector>
 #include "connection_manager.hpp"
-#include "request_handler.hpp"
+#include "../request/request_handler.hpp"
 
 namespace http {
 namespace server {
@@ -90,5 +90,5 @@ void connection::do_write()
       });
 }
 
-} // namespace server
+} // namespace fly-server
 } // namespace http

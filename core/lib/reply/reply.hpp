@@ -14,7 +14,7 @@
 #include <string>
 #include <vector>
 #include <boost/asio.hpp>
-#include "header.hpp"
+#include "../../header.hpp"
 
 namespace http {
 namespace server {
@@ -58,7 +58,7 @@ struct reply
   static reply stock_reply(status_type status);
 };
 
-} // namespace server
+} // namespace fly-server
 } // namespace http
 
 #endif // HTTP_REPLY_HPP

@@ -311,5 +311,5 @@ bool request_parser::is_digit(int c)
   return c >= '0' && c <= '9';
 }
 
-} // namespace server
+} // namespace fly-server
 } // namespace http
