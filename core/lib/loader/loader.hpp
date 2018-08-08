@@ -7,14 +7,20 @@
 
 #include <string>
 
-class loader
+namespace http
 {
-public:
-    loader() = default;
-    loader(const loader&) = delete;
-    virtual ~loader();
+    namespace server
+    {
+        class loader
+        {
+        public:
+            loader() = default;
+            loader(const loader&) = delete;
+            virtual ~loader();
 
-public:
-    int find(std::string classname);
-};
+        public:
+            int find(std::string classname);
+        };
+    }
+}
 #endif //SERVERFLY_LOADER_HPP
