@@ -6,8 +6,3 @@
 
 loader::~loader() {}
 
-// 查找类
-int loader::find(std::string classname)
-{
-    return 0;
-}
