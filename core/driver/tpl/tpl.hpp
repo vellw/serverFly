@@ -13,13 +13,16 @@ namespace http
     {
         namespace tpl
         {
-            // 解析模板
+            // 模板引擎
             class tpl
             {
             public:
-                tpl() = default;
-                tpl(const tpl&) = delete;
+                explicit tpl();
+                tpl(const tpl&);
                 virtual ~tpl();
+
+            protected:
+
             };
         }
     }
