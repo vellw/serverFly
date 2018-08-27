@@ -14,7 +14,29 @@ add_executable(serverFly main.cpp
         core/driver/driver.hpp
         core/driver/db/db.hpp
         core/driver/db/mysql/mysql.hpp
-        core/driver/tpl/tpl.hpp application/config.hpp application/database.hpp application/index.cpp application/index.hpp application/route.hpp core/lib/loader/loader.cpp core/lib/loader/loader.hpp application/main/index.cpp application/main/index.hpp core/lib/controller/controller.cpp core/lib/controller/controller.hpp core/driver/tpl/tpl.cpp core/lib/exception/exception.cpp core/lib/exception/exception.hpp core/lib/route/route.cpp core/lib/route/route.hpp core/lib/url/url.cpp core/lib/url/url.hpp core/lib/memory/session.cpp core/lib/memory/session.hpp core/lib/memory/cookie.cpp core/lib/memory/cookie.hpp)
+        core/driver/tpl/tpl.hpp
+        application/config.hpp
+        application/database.hpp
+        application/index.cpp
+        application/index.hpp
+        application/route.hpp
+        core/lib/loader/loader.cpp
+        core/lib/loader/loader.hpp
+        application/main/index.cpp
+        application/main/index.hpp
+        core/lib/controller/controller.cpp
+        core/lib/controller/controller.hpp
+        core/driver/tpl/tpl.cpp
+        core/lib/exception/exception.cpp
+        core/lib/exception/exception.hpp
+        core/lib/route/route.cpp
+        core/lib/route/route.hpp
+        core/lib/url/url.cpp
+        core/lib/url/url.hpp
+        core/lib/memory/session.cpp
+        core/lib/memory/session.hpp
+        core/lib/memory/cookie.cpp
+        core/lib/memory/cookie.hpp)
 
 find_package(Boost 1.67.0)
 find_package(Threads)
