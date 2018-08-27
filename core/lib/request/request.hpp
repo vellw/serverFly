@@ -19,11 +19,12 @@ namespace server {
 /// A request received from a client.
 struct request
 {
-  std::string method;
-  std::string uri;
-  int http_version_major;
-  int http_version_minor;
-  std::vector<header> headers;
+  std::string method;           // 请求方法
+  std::string uri;              // uri
+  int http_version_major;       // http 主版本
+  int http_version_minor;       // http 次版本
+  std::vector<header> headers;  // http 头部
+  std::string body;             // http body
 };
 
 } // namespace fly-server
