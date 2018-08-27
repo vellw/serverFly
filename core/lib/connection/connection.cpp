@@ -20,8 +20,8 @@ namespace http
 {
     namespace server
     {
-        std::vector<std::pair<const char*,const char*>> $_SERVER;
-        std::vector<std::pair<const char*,const char*>> $_REQUIRE;
+        std::vector<std::pair<const char*,const char*>> $_SERVER;   // 全局变量
+        std::vector<std::pair<const char*,const char*>> $_REQUIRE;  // 全局变量
 
         connection::connection(boost::asio::ip::tcp::socket socket,
                                connection_manager &manager, request_handler &handler)
@@ -48,7 +48,7 @@ namespace http
                                         {
                                             request_parser::result_type result;
                                             std::tie(result, std::ignore) = request_parser_.parse(
-                                                    request_, buffer_.data(), buffer_.data() + bytes_transferred);
+                                                    request_, buffer_.data(), buffer_.data() + bytes_transferred);  // 将返回的tuple解包
                                             set_global_var();
                                             if (result == request_parser::good)
                                             {
