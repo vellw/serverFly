@@ -33,7 +33,16 @@ namespace http::server
     public:
         explicit session_service() = delete;
 
+    public:
+        bool start();
+        bool stop();
+        bool reload();
+        bool restart();
+        bool remove();
+        bool pause();
     private:
+        static unsigned int _use_counts;
+        static std::string _data_file_path;
     };
 }
 
