@@ -9,6 +9,7 @@
 
 namespace http::server
 {
+    // 处理session数据
     class session
     {
     public:
@@ -21,6 +22,18 @@ namespace http::server
     public:
         bool set(std::string key, std::string value);
         bool set(const char* key, std::string value);
+
+        std::string get(std::string key);
+        std::string get(const char* key);
+    };
+
+    // session服务类，用于http服务端处理session
+    class session_service
+    {
+    public:
+        explicit session_service() = delete;
+
+    private:
     };
 }
 
