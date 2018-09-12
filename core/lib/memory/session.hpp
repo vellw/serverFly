@@ -25,6 +25,10 @@ namespace http::server
 
         std::string get(std::string key);
         std::string get(const char* key);
+
+    private:
+        std::string key;
+        std::string value;
     };
 
     // session服务类，用于http服务端处理session

@@ -5,12 +5,17 @@
 #ifndef SERVERFLY_COOKIE_HPP
 #define SERVERFLY_COOKIE_HPP
 
+#include <string>
+
 namespace http
 {
     namespace server
     {
-        class cookie {
-
+        class cookie
+        {
+        public:
+            std::string key;
+            std::string value;
         };
     }
 }

@@ -199,7 +199,7 @@ request_parser::result_type request_parser::consume(request& req, char input)
     else
     {
       req.headers.push_back(header());
-      req.headers.back().name.push_back(input);
+      req.headers.back().key.push_back(input);
       state_ = header_name;
       return indeterminate;
     }
@@ -235,7 +235,7 @@ request_parser::result_type request_parser::consume(request& req, char input)
     }
     else
     {
-      req.headers.back().name.push_back(input);
+      req.headers.back().key.push_back(input);
       return indeterminate;
     }
   case space_before_header_value:

@@ -18,12 +18,10 @@
 
 namespace http {
     namespace server {
-
         /// 定义全局变量
         extern std::vector<std::pair<const char*,const char*>> $_SERVER;
         extern std::vector<std::pair<const char*,const char*>> $_COOKIE;
         extern std::vector<std::pair<const char*,const char*>> $_REQUIRE;
-
 
         /// The top-level class of the HTTP server.
 

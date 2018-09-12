@@ -14,6 +14,7 @@
 #include "../mime/mime_types.hpp"
 #include "../reply/reply.hpp"
 #include "request.hpp"
+#include "../http_define.hpp"
 
 namespace http {
     namespace server {
@@ -57,7 +58,7 @@ namespace http {
             // If path ends in slash (i.e. is a directory) then add "main.html".
             if (request_path[request_path.size() - 1] == '/')
             {
-                request_path += "index.html"; //
+                request_path += "index.html"; // 默认入口
             }
 
             // Determine the file extension.
@@ -69,25 +70,64 @@ namespace http {
                 extension = request_path.substr(last_dot_pos + 1);
             }
 
-            // Open the file to send back.
+            // 打开要输出到客户端（浏览器）的文件
             std::string full_path = doc_root_ + request_path;
-            std::ifstream is(full_path.c_str(), std::ios::in | std::ios::binary);
-            if (!is)
+            std::ifstream in_file_stream(full_path.c_str(), std::ios::in | std::ios::binary);
+            if (!in_file_stream)
             {
                 rep = reply::stock_reply(reply::not_found);
                 return;
             }
 
-            // Fill out the reply to be sent to the client.
+            // 构造发送给客户端（浏览器）的内容
             rep.status = reply::ok;
-            char buf[512];
-            while (is.read(buf, sizeof(buf)).gcount() > 0)
-                rep.content.append(buf, is.gcount());
-            rep.headers.resize(2);
-            rep.headers[0].name = "Content-Length";
-            rep.headers[0].value = std::to_string(rep.content.size());
-            rep.headers[1].name = "Content-Type";
-            rep.headers[1].value = mime_types::extension_to_type(extension);
+            const size_t max_buf_size = 1024;
+            char buf[max_buf_size];
+
+            while (in_file_stream.read(buf, sizeof(buf)).gcount() > 0)
+            {
+                rep.content.append(buf, in_file_stream.gcount());
+            }
+
+            const size_t max_header_counts = 12;
+            rep.headers.resize(max_header_counts);
+
+            rep.headers[HTTP_HEADER_ALLOW].key = "Allow";
+            rep.headers[HTTP_HEADER_ALLOW].value = "*";
+
+            rep.headers[HTTP_HEADER_CONTENT_ENCODING].key = "Content-Encoding";
+            rep.headers[HTTP_HEADER_CONTENT_ENCODING].value = "*";
+
+            rep.headers[HTTP_HEADER_CONTENT_LENGTH].key = "Content-Length";
+            rep.headers[HTTP_HEADER_CONTENT_LENGTH].value = std::to_string(rep.content.size());
+
+            rep.headers[HTTP_HEADER_CONTENT_TYPE].key = "Content-Type";
+            rep.headers[HTTP_HEADER_CONTENT_TYPE].value = mime_types::extension_to_type(extension);
+
+            rep.headers[HTTP_HEADER_DATE].key = "Date";
+            rep.headers[HTTP_HEADER_DATE].value = "*";
+
+            rep.headers[HTTP_HEADER_EXPIRES].key = "Expires";
+            rep.headers[HTTP_HEADER_EXPIRES].value = "*";
+
+            rep.headers[HTTP_HEADER_LAST_MODIFIED].key = "Last-Modified";
+            rep.headers[HTTP_HEADER_LAST_MODIFIED].value = "*";
+
+            rep.headers[HTTP_HEADER_LOCATION].key = "Location";
+            rep.headers[HTTP_HEADER_LOCATION].value = "*";
+
+            rep.headers[HTTP_HEADER_REFRESH].key = "Refresh";
+            rep.headers[HTTP_HEADER_REFRESH].value = "*";
+
+            rep.headers[HTTP_HEADER_SERVER].key = "Server";
+            rep.headers[HTTP_HEADER_SERVER].value = "*";
+
+            rep.headers[HTTP_HEADER_SET_COOKIE].key = "Set-Cookie";
+            rep.headers[HTTP_HEADER_SET_COOKIE].value = "*";
+
+            rep.headers[HTTP_HEADER_WWW_AUTHENTICATE].key = "WWW-Authenticate";
+            rep.headers[HTTP_HEADER_WWW_AUTHENTICATE].value = "*";
+
         }
 
         bool request_handler::url_decode(const std::string &in, std::string &out)
