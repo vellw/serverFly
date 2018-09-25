@@ -89,7 +89,7 @@ namespace http {
                 rep.content.append(buf, in_file_stream.gcount());
             }
 
-            const size_t max_header_counts = 12;
+            const size_t max_header_counts = HTTP_HEADER_LENGTH;
             rep.headers.resize(max_header_counts);
 
             rep.headers[HTTP_HEADER_ALLOW].key = "Allow";
