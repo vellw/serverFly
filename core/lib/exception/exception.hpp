@@ -10,8 +10,7 @@ namespace http
 {
     namespace server
     {
-        class exception
-        {
+        class exception {
 
         };
     }

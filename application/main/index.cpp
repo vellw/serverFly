@@ -6,5 +6,6 @@
 
 namespace app
 {
-    base::~base() {}
+    base::~base()
+    {}
 }

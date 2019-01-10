@@ -9,36 +9,48 @@
 #include <vector>
 #include <map>
 /// 处理路由
-namespace http {
-    namespace server {
+namespace http
+{
+    namespace server
+    {
         class rule;
-        class route
-        {
+        
+        class route {
         public:
             explicit route();
+            
             explicit route(std::string rule);
+            
             explicit route(rule _rule);
+            
             explicit route(std::vector<std::string> rule_list);
+            
             explicit route(std::vector<rule> rule_list);
-            route(const route&);
+            
+            route(const route &);
+            
             virtual ~route();
         };
-
-        class rule
-        {
+        
+        class rule {
         public:
             explicit rule();
+            
             explicit rule(std::string url);
+            
             explicit rule(std::string path, std::string action, std::string params);
-            explicit rule(std::string path, std::string action, std::map<std::string,std::string> params);
+            
+            explicit rule(std::string path, std::string action, std::map<std::string, std::string> params);
+            
             rule(const rule &);
+            
             virtual ~rule();
-
+        
         protected:
             std::string path;
             std::string action;
             std::string params_str;
-            std::map<std::string,std::string> params;
+            std::map<std::string, std::string> params;
         };
     }
 }

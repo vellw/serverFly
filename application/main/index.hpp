@@ -6,11 +6,12 @@
 #define SERVERFLY_INDEX_HPP
 namespace app
 {
-    class base
-    {
+    class base {
     public:
         base() = default;
-        base(const base&) = delete;
+        
+        base(const base &) = delete;
+        
         virtual ~base();
     };
 }

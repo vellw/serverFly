@@ -8,6 +8,7 @@ namespace http
 {
     namespace server
     {
-        loader::~loader() {}
+        loader::~loader()
+        {}
     }
 }

@@ -9,7 +9,8 @@ namespace http
     {
         namespace tpl
         {
-            tpl::~tpl() {}
+            tpl::~tpl()
+            {}
         }
     }
 }

@@ -5,12 +5,12 @@
 #ifndef SERVERFLY_DATABASE_HPP
 #define SERVERFLY_DATABASE_HPP
 typedef struct {
-    char * host;
+    char *host;
     unsigned short port;
-    char * username;
-    char * password;
-    char * database;
-}database;
+    char *username;
+    char *password;
+    char *database;
+} database;
 
 database database_conf = {
         .host = "",

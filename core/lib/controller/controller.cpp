@@ -8,6 +8,7 @@ namespace http
 {
     namespace server
     {
-        controller::~controller() {}
+        controller::~controller()
+        {}
     }
 }

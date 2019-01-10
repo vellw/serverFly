@@ -16,51 +16,53 @@
 #include "request.hpp"
 #include "../http_define.hpp"
 
-namespace http {
-    namespace server {
-
+namespace http
+{
+    namespace server
+    {
+        
         request_handler::request_handler(const std::string &doc_root)
                 : doc_root_(doc_root)
         {
-
+        
         }
-
+        
         void request_handler::handle_request(const request &req, reply &rep)
         {
-            // Decode url to path.
+            // 将url解码为路径。
             std::string request_path;
             if (!url_decode(req.uri, request_path))
             {
                 rep = reply::stock_reply(reply::bad_request);
                 return;
             }
-
-            // Request path must be absolute and not contain "..".
-            if ( request_path.empty() )
+            
+            // 请求路径必须是绝对的且不包含 "..".
+            if (request_path.empty())
             {
                 rep = reply::stock_reply(reply::bad_request);
                 return;
             }
-
-            if( request_path[0] != '/')
+            
+            if (request_path[0] != '/')
             {
                 rep = reply::stock_reply(reply::bad_request);
                 return;
             }
-
-            if( request_path.find("..") != std::string::npos )
+            
+            if (request_path.find("..") != std::string::npos)
             {
                 rep = reply::stock_reply(reply::bad_request);
                 return;
             }
-
-
-            // If path ends in slash (i.e. is a directory) then add "main.html".
+            
+            
+            // 如果path以斜杠结尾（即是目录），则添加“index.html”。
             if (request_path[request_path.size() - 1] == '/')
             {
                 request_path += "index.html"; // 默认入口
             }
-
+            
             // Determine the file extension.
             std::size_t last_slash_pos = request_path.find_last_of("/");
             std::size_t last_dot_pos = request_path.find_last_of(".");
@@ -69,7 +71,7 @@ namespace http {
             {
                 extension = request_path.substr(last_dot_pos + 1);
             }
-
+            
             // 打开要输出到客户端（浏览器）的文件
             std::string full_path = doc_root_ + request_path;
             std::ifstream in_file_stream(full_path.c_str(), std::ios::in | std::ios::binary);
@@ -78,58 +80,58 @@ namespace http {
                 rep = reply::stock_reply(reply::not_found);
                 return;
             }
-
+            
             // 构造发送给客户端（浏览器）的内容
             rep.status = reply::ok;
             const size_t max_buf_size = 1024;
             char buf[max_buf_size];
-
+            
             while (in_file_stream.read(buf, sizeof(buf)).gcount() > 0)
             {
                 rep.content.append(buf, in_file_stream.gcount());
             }
-
+            
             const size_t max_header_counts = HTTP_HEADER_LENGTH;
             rep.headers.resize(max_header_counts);
-
+            
             rep.headers[HTTP_HEADER_ALLOW].key = "Allow";
             rep.headers[HTTP_HEADER_ALLOW].value = "*";
-
+            
             rep.headers[HTTP_HEADER_CONTENT_ENCODING].key = "Content-Encoding";
             rep.headers[HTTP_HEADER_CONTENT_ENCODING].value = "*";
-
+            
             rep.headers[HTTP_HEADER_CONTENT_LENGTH].key = "Content-Length";
             rep.headers[HTTP_HEADER_CONTENT_LENGTH].value = std::to_string(rep.content.size());
-
+            
             rep.headers[HTTP_HEADER_CONTENT_TYPE].key = "Content-Type";
             rep.headers[HTTP_HEADER_CONTENT_TYPE].value = mime_types::extension_to_type(extension);
-
+            
             rep.headers[HTTP_HEADER_DATE].key = "Date";
             rep.headers[HTTP_HEADER_DATE].value = "*";
-
+            
             rep.headers[HTTP_HEADER_EXPIRES].key = "Expires";
             rep.headers[HTTP_HEADER_EXPIRES].value = "*";
-
+            
             rep.headers[HTTP_HEADER_LAST_MODIFIED].key = "Last-Modified";
             rep.headers[HTTP_HEADER_LAST_MODIFIED].value = "*";
-
+            
             rep.headers[HTTP_HEADER_LOCATION].key = "Location";
             rep.headers[HTTP_HEADER_LOCATION].value = "*";
-
+            
             rep.headers[HTTP_HEADER_REFRESH].key = "Refresh";
             rep.headers[HTTP_HEADER_REFRESH].value = "*";
-
+            
             rep.headers[HTTP_HEADER_SERVER].key = "Server";
             rep.headers[HTTP_HEADER_SERVER].value = "*";
-
+            
             rep.headers[HTTP_HEADER_SET_COOKIE].key = "Set-Cookie";
             rep.headers[HTTP_HEADER_SET_COOKIE].value = "*";
-
+            
             rep.headers[HTTP_HEADER_WWW_AUTHENTICATE].key = "WWW-Authenticate";
             rep.headers[HTTP_HEADER_WWW_AUTHENTICATE].value = "*";
-
+            
         }
-
+        
         bool request_handler::url_decode(const std::string &in, std::string &out)
         {
             out.clear();
@@ -168,6 +170,6 @@ namespace http {
             }
             return true;
         }
-
+        
     } // namespace fly-server
 } // namespace http

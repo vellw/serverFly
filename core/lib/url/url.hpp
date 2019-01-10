@@ -8,10 +8,9 @@
 namespace http
 {
     class url {
-
+    
     };
 }
-
 
 
 #endif //SERVERFLY_URL_HPP

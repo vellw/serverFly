@@ -11,13 +11,14 @@ namespace http
 {
     namespace server
     {
-        class loader
-        {
+        class loader {
         public:
             loader() = default;
-            loader(const loader&) = delete;
+            
+            loader(const loader &) = delete;
+            
             virtual ~loader();
-
+        
         public:
             int find(std::string classname);
         };

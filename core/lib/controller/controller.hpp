@@ -9,11 +9,12 @@ namespace http
 {
     namespace server
     {
-        class controller
-        {
+        class controller {
         public:
             controller() = default;
-            controller(const controller&) = delete;
+            
+            controller(const controller &) = delete;
+            
             virtual ~controller();
         };
     }

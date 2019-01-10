@@ -7,7 +7,7 @@
 #include <boost/asio.hpp>
 #include "core/server.hpp"
 
-void help(int argc, char * argv[])
+void help(int argc, char *argv[])
 {
     // Check command line arguments.
     if (argc != 4)
@@ -17,12 +17,12 @@ void help(int argc, char * argv[])
         std::cerr << "    receiver 0.0.0.0 80 .\n";
         std::cerr << "  For IPv6, try:\n";
         std::cerr << "    receiver 0::0 80 .\n";
-        return ;
+        return;
     }
     return;
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     try
     {
@@ -32,16 +32,16 @@ int main(int argc, char* argv[])
         std::string port_num("61001");
         std::string doc_root("/home/seedsone/vellw/workspace/c_cpp_proj/fly-server/public/");
         http::server::server s(ip_addr, port_num, doc_root);
-
+        
         // Run the serverFly until stopped.
         s.run();
         // 路由分发
         // ......
     }
-    catch (std::exception& e)
+    catch (std::exception &e)
     {
         std::cerr << "exception: " << e.what() << "\n";
     }
-
-  return 0;
+    
+    return 0;
 }
