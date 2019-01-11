@@ -6,7 +6,8 @@
 #define SERVERFLY_INDEX_HPP
 namespace app
 {
-    class base {
+    class base
+    {
     public:
         base() = default;
         

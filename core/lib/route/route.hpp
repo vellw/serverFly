@@ -15,7 +15,8 @@ namespace http
     {
         class rule;
         
-        class route {
+        class route
+        {
         public:
             explicit route();
             
@@ -32,7 +33,8 @@ namespace http
             virtual ~route();
         };
         
-        class rule {
+        class rule
+        {
         public:
             explicit rule();
             

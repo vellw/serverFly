@@ -19,7 +19,8 @@ namespace http
     {
 
 /// A request received from a client.
-        struct request {
+        struct request
+        {
             std::string method;           // 请求方法
             std::string uri;              // uri
             int http_version_major;       // http 主版本

@@ -14,7 +14,8 @@ namespace http
         namespace tpl
         {
             // 模板引擎
-            class tpl {
+            class tpl
+            {
             public:
                 explicit tpl();
                 

@@ -29,7 +29,8 @@ namespace http
         
         ///  HTTP server 声明.
         
-        class server {
+        class server
+        {
         public:
             server(const server &) = delete;
             

@@ -11,7 +11,8 @@ namespace http
 {
     namespace server
     {
-        class cookie {
+        class cookie
+        {
         public:
             std::string key;
             std::string value;

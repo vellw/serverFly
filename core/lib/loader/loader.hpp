@@ -11,7 +11,8 @@ namespace http
 {
     namespace server
     {
-        class loader {
+        class loader
+        {
         public:
             loader() = default;
             

@@ -7,7 +7,8 @@
 
 namespace http
 {
-    class url {
+    class url
+    {
     
     };
 }

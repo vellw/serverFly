@@ -15,7 +15,8 @@ namespace http
         namespace mime_types
         {
             
-            struct mapping {
+            struct mapping
+            {
                 const char *extension;
                 const char *mime_type;
             } mappings[] =

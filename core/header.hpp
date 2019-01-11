@@ -16,7 +16,8 @@ namespace http
     namespace server
     {
         
-        struct header {
+        struct header
+        {
             std::string key;
             std::string value;
         };

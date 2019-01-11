@@ -4,7 +4,8 @@
 
 #ifndef SERVERFLY_ROUTE_HPP
 #define SERVERFLY_ROUTE_HPP
-typedef struct {
+typedef struct
+{
     char path[1024];
 } route;
 

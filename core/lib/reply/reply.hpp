@@ -20,9 +20,11 @@ namespace http
     {
 
 /// A reply to be sent to a client.
-        struct reply {
+        struct reply
+        {
             /// The status of the reply.
-            enum status_type {
+            enum status_type
+            {
                 ok = 200,
                 created = 201,
                 accepted = 202,

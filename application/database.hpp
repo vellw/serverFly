@@ -4,7 +4,8 @@
 
 #ifndef SERVERFLY_DATABASE_HPP
 #define SERVERFLY_DATABASE_HPP
-typedef struct {
+typedef struct
+{
     char *host;
     unsigned short port;
     char *username;

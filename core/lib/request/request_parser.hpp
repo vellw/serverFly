@@ -19,7 +19,8 @@ namespace http
         struct request;
 
 /// Parser for incoming requests.
-        class request_parser {
+        class request_parser
+        {
         public:
             /// Construct ready to parse the request method.
             request_parser();
@@ -28,7 +29,8 @@ namespace http
             void reset();
             
             /// Result of parse.
-            enum result_type {
+            enum result_type
+            {
                 good, bad, indeterminate
             };
             
@@ -66,7 +68,8 @@ namespace http
             static bool is_digit(int c);
             
             /// The current state of the parser.
-            enum state {
+            enum state
+            {
                 method_start,
                 method,
                 uri,

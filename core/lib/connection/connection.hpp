@@ -26,7 +26,8 @@ namespace http
 
 /// Represents a single connection from a client.
         class connection
-                : public std::enable_shared_from_this<connection> {
+                : public std::enable_shared_from_this<connection>
+        {
         public:
             connection(const connection &) = delete;
             

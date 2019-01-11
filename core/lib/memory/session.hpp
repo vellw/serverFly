@@ -10,7 +10,8 @@
 namespace http::server
 {
     // 处理session数据
-    class session {
+    class session
+    {
     public:
         explicit session() = default;
     
@@ -34,7 +35,8 @@ namespace http::server
     };
     
     // session服务类，用于http服务端处理session
-    class session_service {
+    class session_service
+    {
     public:
         explicit session_service() = delete;
     

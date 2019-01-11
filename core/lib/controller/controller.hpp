@@ -9,7 +9,8 @@ namespace http
 {
     namespace server
     {
-        class controller {
+        class controller
+        {
         public:
             controller() = default;
             
