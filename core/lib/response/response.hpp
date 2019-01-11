@@ -1,0 +1,18 @@
+//
+// Created by seedsone on 19-1-11.
+//
+
+#ifndef SERVERFLY_RESPONSE_HPP
+#define SERVERFLY_RESPONSE_HPP
+
+namespace http::server
+{
+    class response
+    {
+    
+    };
+    
+}
+
+
+#endif //SERVERFLY_RESPONSE_HPP

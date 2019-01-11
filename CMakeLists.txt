@@ -37,7 +37,7 @@ add_executable(serverFly main.cpp
         core/lib/memory/session.hpp
         core/lib/memory/cookie.cpp
         core/lib/memory/cookie.hpp
-        core/lib/http_define.hpp)
+        core/lib/http_define.hpp core/lib/response/response.cpp core/lib/response/response.hpp core/lib/response/response_handler.cpp core/lib/response/response_handler.hpp core/lib/response/response_parser.cpp core/lib/response/response_parser.hpp)
 
 find_package(Boost 1.67.0)
 find_package(Threads)
