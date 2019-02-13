@@ -14,6 +14,7 @@ namespace http
 {
     namespace server
     {
+        server* server::instance = nullptr;
         
         server::server(const std::string &address, const std::string &port,
                        const std::string &doc_root)
@@ -89,6 +90,17 @@ namespace http
                         connection_manager_.stop_all();
                     });
         }
-        
+    
+        server* server::get_instance(const std::string &address, const std::string &port,
+                                    const std::string &doc_root)
+        {
+            if(server::instance == nullptr)
+            {
+                server::instance = new server(address,port,doc_root);
+            }
+            
+            return server::instance;
+        }
+    
     } // namespace fly-server
 } // namespace http

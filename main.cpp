@@ -30,11 +30,11 @@ int main(int argc, char *argv[])
         // http::server::server s(argv[1], argv[2], argv[3]);
         std::string ip_addr("127.0.0.1");
         std::string port_num("61001");
-        std::string doc_root("/home/seedsone/vellw/workspace/c_cpp_proj/fly-server/public/");
-        http::server::server s(ip_addr, port_num, doc_root);
+        std::string doc_root("../public/");
         
         // Run the serverFly until stopped.
-        s.run();
+        http::server::server * serv = http::server::server::get_instance(ip_addr, port_num, doc_root);
+        serv->run();
         // 路由分发
         // ......
     }

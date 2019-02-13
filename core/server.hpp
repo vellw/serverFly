@@ -31,7 +31,7 @@ namespace http
         
         class server
         {
-        public:
+        private:  // 服务需要单例模式
             server(const server &) = delete;
             
             server &operator=(const server &) = delete;
@@ -39,17 +39,22 @@ namespace http
             /// 显示构造
             explicit server(const std::string &address, const std::string &port,
                             const std::string &doc_root);
-            
+
+        public:
             /// Run the server's io_context loop.
             void run();
-        
+
+        public:
+            static server * get_instance(const std::string &address, const std::string &port,
+                                         const std::string &doc_root);
         private:
             /// Perform an asynchronous accept operation.
             void do_accept();
             
             /// Wait for a request to stop the server.
             void do_await_stop();
-            
+
+        private:
             /// The io_context used to perform asynchronous operations.
             boost::asio::io_context io_context_;
             
@@ -64,6 +69,8 @@ namespace http
             
             /// The handler for all incoming requests.
             request_handler request_handler_;
+        private:
+            static server * instance;
             
         };
         
